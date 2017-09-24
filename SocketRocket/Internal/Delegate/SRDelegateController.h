@@ -13,17 +13,30 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// AH: BOOL can't be defined on one bit with Xcode 9's LLVM's. It crashes at runtime!
 struct SRDelegateAvailableMethods {
-    BOOL didReceiveMessage : 1;
-    BOOL didReceiveMessageWithString : 1;
-    BOOL didReceiveMessageWithData : 1;
-    BOOL didOpen : 1;
-    BOOL didFailWithError : 1;
-    BOOL didCloseWithCode : 1;
-    BOOL didReceivePing : 1;
-    BOOL didReceivePong : 1;
-    BOOL shouldConvertTextFrameToString : 1;
+    BOOL didReceiveMessage;
+    BOOL didReceiveMessageWithString;
+    BOOL didReceiveMessageWithData;
+    BOOL didOpen;
+    BOOL didFailWithError;
+    BOOL didCloseWithCode;
+    BOOL didReceivePing;
+    BOOL didReceivePong;
+    BOOL shouldConvertTextFrameToString;
 };
+//struct SRDelegateAvailableMethods {
+//    BOOL didReceiveMessage : 1;
+//    BOOL didReceiveMessageWithString : 1;
+//    BOOL didReceiveMessageWithData : 1;
+//    BOOL didOpen : 1;
+//    BOOL didFailWithError : 1;
+//    BOOL didCloseWithCode : 1;
+//    BOOL didReceivePing : 1;
+//    BOOL didReceivePong : 1;
+//    BOOL shouldConvertTextFrameToString : 1;
+//};
+
 typedef struct SRDelegateAvailableMethods SRDelegateAvailableMethods;
 
 typedef void(^SRDelegateBlock)(id<SRWebSocketDelegate> _Nullable delegate, SRDelegateAvailableMethods availableMethods);
